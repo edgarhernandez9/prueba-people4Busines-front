@@ -2,22 +2,43 @@ import { useNavigate } from 'react-router-dom';
 import { useBlog } from '../../hooks/useBlog';
 import { useFormik } from 'formik';
 import { TextField, Button } from '../index';
+import { Register } from '../../api/register';
 import { initialValues, validationSchema } from '../../utils/ValidateForms/RegisterBlog';
 
 import '../../css/RegisterForm.css';
+import { useState } from 'react';
 
+
+const registerCtrl = new Register();
 
 export const RegisterForm = () => {
 
     const navigate = useNavigate();
-    const { registrarBlog } = useBlog();
+    const [isDisabled, setIsDisabled] = useState(false);
 
     const formik = useFormik({
         initialValues: initialValues(),
         validationSchema: validationSchema(),
         validateOnChange: false,
         onSubmit: async (values) => {
-            await registrarBlog(values);
+            setIsDisabled(true)
+            try {
+                const data = {
+                    ...values,
+                    fechaPublicacion: values.fechaPubli
+                }
+                const response = await registerCtrl.register(data);
+                if (response.status === 201) {
+                    formik.resetForm();
+                    setIsDisabled(false)
+                }else{
+                    formik.resetForm();
+                    setIsDisabled(false)
+                    console.log('sin exito');
+                }
+            } catch (error) {
+                throw error;
+            }
         }
     });
 

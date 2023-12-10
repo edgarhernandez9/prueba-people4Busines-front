@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { SectionBlog, Search, Button, Spinner, Modal } from '../../components';
 import { useBlog } from '../../hooks/useBlog';
@@ -11,9 +11,14 @@ import '../../css/EntryList.css';
 
 export const EntryList = () => {
     const navigate = useNavigate();
-    const { datosBlog, isLoading, filterBlog, getFilterId} = useBlog();
+    const { datosBlog, isLoading, filterBlog, getFilterId, getAllBlog} = useBlog();
    
+    
     const [ isOpenModal, setIsOpenModal ] = useState(false);
+   
+    useEffect(() => {
+        getAllBlog()
+    }, [])
     
     const handleClic = (id) => {
         getFilterId(id);
@@ -28,11 +33,15 @@ export const EntryList = () => {
     return (
         <div className='container' >
             <Spinner isOpenSpinner={ isLoading } />
+            
             <h1>Lista de Blogs</h1>
 
             <div className='container-search'>
                 <Search />
             </div>
+            {
+                datosBlog.length === 0 && <div>Sin datos</div>
+            }
             {
                 datosBlog.map((values) => (
                     <SectionBlog 

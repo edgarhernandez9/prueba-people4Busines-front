@@ -15,6 +15,7 @@ export class Register {
 
             return response;
         } catch (error) {
+            console.log(error);
             throw error;
         }
     }

@@ -26,33 +26,20 @@ export const BlogProvider = (props) => {
     }, [isOpen]);
 
     const getAllBlog = async () => {
-        setisLoading(true)
-        const response = await registerCtrl.getAllBlog();
-        if (response.status === 200) {
-            
-            setDatosBlog(response.data);
-            setisLoading(false);
-        }
-    }
-
-    const registrarBlog = async (values) => {
+        
         try {
-            const data = {
-                ...values,
-                fechaPublicacion: values.fechaPubli
-            }
-            const response = await registerCtrl.register(data);
+            setisLoading(true)
+            const response = await registerCtrl.getAllBlog();
             if (response.status === 200) {
-                console.log('exitoso');
-            }else{
-                console.log('sin exito');
+                
+                setDatosBlog(response.data);
+                setisLoading(false);
             }
+            
         } catch (error) {
-            throw error;
+            setisLoading(false)
         }
     }
-
-
     const getFilter = async (value) => {
         const datosFilter = [];
         datosBlog.filter(blog => {
@@ -103,12 +90,12 @@ export const BlogProvider = (props) => {
         valueSearch,
         isOpen,
         filterBlog,
-        registrarBlog,
         getFilter,
         handleChangeSearch,
         handleClickShowSearch,
         handleClickShowSearch,
-        getFilterId
+        getFilterId,
+        getAllBlog
         
     }
 

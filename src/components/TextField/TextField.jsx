@@ -10,7 +10,6 @@ export const TextField = (props) => {
                 placeholder={ placeholder }
                 value={ value }
                 onChange={ handleChange }
-                readOnly
                 style={{
                     ...style,
                     

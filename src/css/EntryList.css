@@ -1,0 +1,30 @@
+
+
+.container-search{
+    width: 90%;
+    height: 60px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    align-content: center;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 30px;
+}
+
+.blogCuerpo{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.blogCuerpo-titulo{
+    margin-top: 20px;
+    color: rgb(43, 36, 36);
+}

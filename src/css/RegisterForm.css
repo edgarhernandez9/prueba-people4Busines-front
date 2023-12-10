@@ -1,0 +1,42 @@
+.containerForm{
+    display: flex;
+    width: 50%;
+    justify-content: center;
+    background-color: rgb(220, 248, 248);
+    padding: 20px;
+}
+
+.containerForm-items-area{
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.containerForm-items-area-item{
+    min-width: 230px;
+    max-width: 350px;
+    width: 240px;
+    height: 20px;
+    min-height: 20px;
+    border: 2px solid black;
+    border-radius: 5px;
+    color: rgb(26, 23, 23);
+    padding: 5px 10px;
+}
+
+.containerForm-items-area-item-error{
+    min-width: 230px;
+    max-width: 350px;
+    width: 240px;
+    height: 20px;
+    min-height: 20px;
+    border: 2px solid red;
+    border-radius: 5px;
+    color: rgb(26, 23, 23);
+    padding: 5px 10px;
+}
+.containerForm-items-area-item:focus-visible{
+    border: 2px solid green !important;
+    outline: none;
+}
